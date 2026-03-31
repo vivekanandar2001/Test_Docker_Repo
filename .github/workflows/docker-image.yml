@@ -42,4 +42,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: vivekananda2001/test_workflow:$GITHUB_ENV
+          tags: vivekananda2001/test_workflow:$VERSION
