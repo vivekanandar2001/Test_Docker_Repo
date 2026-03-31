@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest  # GitHub-hosted runner (VM)
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        # Pulls repo code into runner
       - name: Update Stored Variable
         env:
           GH_TOKEN: ${{ secrets.TEST_DOCKER_REPO_PAT }}
@@ -22,9 +25,7 @@ jobs:
           echo "VERSION=$NEW_VAL" >> $GITHUB_ENV
           # 3. Update the variable in GitHub Settings
           gh variable set VERSION --body "$NEW_VAL"
-      - name: Checkout code
-        uses: actions/checkout@v4
-        # Pulls repo code into runner
+          
       - name: login to docker hub
         uses: docker/login-action@v3
         with:
